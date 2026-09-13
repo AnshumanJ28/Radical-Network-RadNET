@@ -301,7 +301,7 @@ RadNet effortlessly maps the classic non-linear XOR problem, reaching 100% accur
 </details>
 
 ### 2. Iris Dataset (Multi-class)
-**Final Accuracy: 100%**
+**Final Accuracy: 98%**
 Proving multi-class continuous feature learning, the projection layer folds the 4 flower features into the 2-node shell, and successfully classifies the 3 distinct Iris species.
 <details>
 <summary>View Terminal Output</summary>
@@ -311,7 +311,7 @@ Proving multi-class continuous feature learning, the projection layer folds the 
 </details>
 
 ### 3. Heart Disease Dataset (Clinical Data)
-**Final Accuracy: ~85%+ (Converged)**
+**Final Accuracy: ~75%+ (Converged)**
 Proving convergence on noisy, real-world clinical data.
 <details>
 <summary>View Terminal Output</summary>
