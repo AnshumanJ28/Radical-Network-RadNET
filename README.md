@@ -173,13 +173,13 @@ graph LR
     N2_3((Node 2,3))
 
     %% Sparse Connections
-    N1_1 -->|w| N2_1
-    N1_1 -->|w| N2_2
+    N1_1 -->|Weave| N2_1
+    N1_1 -->|Weave| N2_2
     N1_1 -.->|Severed| N2_3
 
     N1_2 -.->|Severed| N2_1
-    N1_2 -->|w| N2_2
-    N1_2 -->|w| N2_3
+    N1_2 -->|Weave| N2_2
+    N1_2 -->|Weave| N2_3
 ```
 
 ---
