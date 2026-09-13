@@ -1,0 +1,23 @@
+# Build outputs
+build/
+*.o
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Datasets and large binary files
+*.csv
+*-ubyte
+*.gz
+*.zip
+*.tar
+*.tar.gz
+
+# IDE / OS files
+.vscode/
+.idea/
+*.suo
+*.sln
+.DS_Store
+Thumbs.db
