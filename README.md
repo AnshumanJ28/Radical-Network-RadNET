@@ -151,14 +151,35 @@ Unlike flat layers, RadNet uses an exponentially expanding radial topology (a Cy
 
 ```mermaid
 graph LR
-    subgraph RadNet Web Topology
-        direction LR
-        S1((Shell 1<br>2 Nodes)) -->|Weave| S2((Shell 2<br>3 Nodes))
-        S2 -->|Weave| S3((Shell 3<br>4 Nodes))
-        S3 -->|Weave| S4((Shell 4<br>5 Nodes))
-        S4 -.->|Exponential Growth| S15((Shell 15<br>134 Nodes))
-        S15 -->|Weave| S16((Shell 16<br>181 Nodes))
-    end
+    S1((Shell 1<br>2 Nodes)) -->|Weave| S2((Shell 2<br>3 Nodes))
+    S2 -->|Weave| S3((Shell 3<br>4 Nodes))
+    S3 -->|Weave| S4((Shell 4<br>5 Nodes))
+    S4 -.->|Exponential Growth| S15((Shell 15<br>134 Nodes))
+    S15 -->|Weave| S16((Shell 16<br>181 Nodes))
+```
+
+### 3. Node-Level Ring Topology
+Within the Weaves, nodes (neurons) in one ring project outward to the nodes in the next concentric ring. The network physically severs connections (Break) based on stress.
+
+```mermaid
+graph LR
+    %% Shell 1 (2 Nodes)
+    N1_1((Node 1,1))
+    N1_2((Node 1,2))
+
+    %% Shell 2 (3 Nodes)
+    N2_1((Node 2,1))
+    N2_2((Node 2,2))
+    N2_3((Node 2,3))
+
+    %% Sparse Connections
+    N1_1 -->|w| N2_1
+    N1_1 -->|w| N2_2
+    N1_1 -.->|Severed| N2_3
+
+    N1_2 -.->|Severed| N2_1
+    N1_2 -->|w| N2_2
+    N1_2 -->|w| N2_3
 ```
 
 ---
