@@ -325,9 +325,11 @@ Proving that the Universal Random Projection matrix can perfectly compress 30 di
 ![Breast Cancer Terminal Output 2](TImage/BCancer2.png)
 </details>
 
-### 5. MNIST (High-Dimensional Vision)
-**Final Accuracy: ~11% (In 1 Epoch)**
-As an extreme stress test, the full 16-shell Holographic Injector topology (comprising roughly 500 parameters) was tested against the massive MNIST image dataset. RadNet successfully processed the complex holographic frequencies and achieved ~11% accuracy in just a single epoch, proving that the network can extract signal from highly complex image geometries using strictly localized Thermodynamic Stress, without using the Backpropagation algorithm.
+### 5. MNIST (Architecture Smoke Test)
+**Status: Pipeline Verified (1 Epoch Partial Run)**
+As an extreme stress test, the full 16-shell Holographic Injector topology was tested against the massive high-dimensional MNIST image dataset. The objective of this run was not to wait for accuracy convergence, but to verify the stability of the complex data pipeline.
+
+RadNet successfully converted the 28x28 spatial images into the frequency domain (via FFTW3), radially sorted the frequencies, and injected them into the concentric shells. The network completed a full forward and backward thermodynamic pass, outputting a stable ~11% (baseline initialization) in a single epoch. This successfully proves that the engine can ingest, process, and mutate on massive visual datasets natively in C without any NaN explosions, memory faults, or gradient collapse.
 
 ---
 
