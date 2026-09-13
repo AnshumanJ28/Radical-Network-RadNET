@@ -29,6 +29,8 @@ RadNet eschews classic machine learning terminology in favor of physics and geom
 | **Web** | An independent, parallel structure within the Cylinder containing concentric rings of nodes. |
 | **Shell** | A concentric ring of nodes at a specific radial depth from the center. |
 | **Node** | A point in complex space possessing Magnitude (energy) and Phase (alignment). |
+| **Magnitude ($r$)** | The internal energy or activation strength of a signal within the network. |
+| **Phase ($\theta$)** | The conceptual alignment of a signal. Signals with matching phases constructively interfere. |
 | **Weave** | The sparse, complex-valued energetic pathways connecting one Shell to the next. |
 | **Echo** | The thermodynamic wave of stress that propagates inward from the boundary layer. |
 | **Stress** | The localized pressure experienced by a node, which directly drives structural mutation. |
