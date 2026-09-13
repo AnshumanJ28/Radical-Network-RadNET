@@ -158,28 +158,50 @@ graph LR
     S15 -->|Weave| S16((Shell 16<br>181 Nodes))
 ```
 
-### 3. Node-Level Ring Topology
-Within the Weaves, nodes (neurons) in one ring project outward to the nodes in the next concentric ring. The network physically severs connections (Break) based on stress.
+### 3. The Internal Weave (Node-Level Sparse Connections)
+This diagram illustrates the topological **k=3 radial sparsity rule**. In standard deep learning, layers are fully connected (dense matrices). In RadNet, a node in Shell $S+1$ draws energy from exactly 3 random nodes in the previous Shell $S$. 
+
+**How it works in the C Codebase:**
+At initialization (`lifecycle.c`), the matrix is created, but the algorithm selects exactly 3 connections per row to receive a random complex weight. All other connections are forced to `0.0 + 0.0i` and immediately flagged as `frozen_mask = true`. This forces the mutation engine to completely ignore them, artificially creating a sparse spiderweb geometry while still allowing the use of highly optimized dense array processing.
 
 ```mermaid
 graph LR
-    %% Shell 1 (2 Nodes)
-    N1_1((Node 1,1))
-    N1_2((Node 1,2))
+    subgraph Source [Shell S Source]
+        S1((Node 1<br>z: Phase/Mag))
+        S2((Node 2<br>z: Phase/Mag))
+        S3((Node 3<br>z: Phase/Mag))
+        S4((Node 4<br>z: Phase/Mag))
+        S5((Node 5<br>z: Phase/Mag))
+    end
 
-    %% Shell 2 (3 Nodes)
-    N2_1((Node 2,1))
-    N2_2((Node 2,2))
-    N2_3((Node 2,3))
+    subgraph Dest [Shell S+1 Destination]
+        D1((Dest Node 1))
+        D2((Dest Node 2))
+    end
 
-    %% Sparse Connections
-    N1_1 -->|Weave| N2_1
-    N1_1 -->|Weave| N2_2
-    N1_1 -.->|Severed| N2_3
+    %% k=3 Active Connections for D1
+    S1 ===|"W: 0.23 + 0.5i"| D1
+    S3 ===|"W: 0.11 - 0.4i"| D1
+    S5 ===|"W: 0.45 + 0.1i"| D1
+    
+    %% Implicit frozen connections for D1
+    S2 -.-x|"Frozen 0.0i"| D1
+    S4 -.-x|"Frozen 0.0i"| D1
 
-    N1_2 -.->|Severed| N2_1
-    N1_2 -->|Weave| N2_2
-    N1_2 -->|Weave| N2_3
+    %% k=3 Active Connections for D2
+    S2 ===|"W: 0.33 + 0.2i"| D2
+    S3 ===|"W: 0.05 + 0.8i"| D2
+    S4 ===|"W: 0.27 - 0.1i"| D2
+
+    %% Styling
+    classDef active fill:#e8f4f8,stroke:#0077b6,stroke-width:2px,color:#000;
+    classDef dest fill:#ffb703,stroke:#fb8500,stroke-width:2px,color:#000;
+    
+    class S1,S2,S3,S4,S5 active;
+    class D1,D2 dest;
+    
+    linkStyle 0,1,2,5,6,7 stroke:#0077b6,stroke-width:2px;
+    linkStyle 3,4 stroke:#ccc,stroke-width:1px,stroke-dasharray: 5 5;
 ```
 
 ---
