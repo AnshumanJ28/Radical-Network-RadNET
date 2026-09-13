@@ -343,9 +343,6 @@ By abandoning standard calculus and matrix structures, RadNet naturally solves s
 
 ---
 
-## Summary
-By combining complex analysis, thermodynamic stress routing, and a radial growing topology, RadNet serves as a lightning-fast, highly transparent alternative to standard differentiable deep learning.
-
 ---
 
 ## Author
