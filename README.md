@@ -202,6 +202,9 @@ graph LR
     
     linkStyle 0,1,2,5,6,7 stroke:#0077b6,stroke-width:2px;
     linkStyle 3,4 stroke:#ccc,stroke-width:1px,stroke-dasharray: 5 5;
+    
+    style Source fill:transparent,stroke:none;
+    style Dest fill:transparent,stroke:none;
 ```
 
 ---
