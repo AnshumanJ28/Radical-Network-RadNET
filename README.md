@@ -133,7 +133,7 @@ graph TD
     C --> E[Shell 1]
     D --> E
     E -->|Domain 3: Weaves & Flow| F[Shell 2]
-    F -->|...| G[Shell 16]
+    F -.->|"Exponential Shell Expansion"| G["Shell 16"]
     G --> H[Tradeoff Layer]
     H --> I[Real-Valued Logits]
     I -->|Domain 4: Snag| J[Cross Entropy Loss]
