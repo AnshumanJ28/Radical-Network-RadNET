@@ -1,3 +1,5 @@
+<div align="center">
+
 # RadNet: Radial Network
 ![C](https://img.shields.io/badge/c-red.svg?style=for-the-badge&logo=c&logoColor=white)
 ![C++](https://img.shields.io/badge/c++-red.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white)
@@ -5,7 +7,9 @@
 
 **An Unorthodox, Non-Differentiable Neural Paradigm**
 
-RadNet is not another PyTorch wrapper. It is not a transformer, a CNN, or an MLP. **This architecture does not exist anywhere else.**
+*RadNet is not a PyTorch wrapper, nor is it a transformer, CNN, or MLP. It represents a fundamental and unprecedented departure from conventional deep learning architectures.*
+
+</div>
 
 RadNet is a novel neural algorithm implemented purely in a low-level language (bare-metal C/C++), completely abandoning 40 years of standard deep learning orthodoxy. It destroys the need for dense real-valued matrices, global calculus (backpropagation), unbounded ReLUs, and static layer shapes. Instead, RadNet is a living topological structure founded on **complex analysis, graph thermodynamics, and evolutionary biology**.
 
