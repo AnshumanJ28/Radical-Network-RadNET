@@ -60,12 +60,12 @@ Standard AI uses unbounded ReLUs, which cause exploding gradients. RadNet invent
 
 ```mermaid
 graph LR
-    A[Complex Input: z = r * e^iθ] --> B[Subtract Bias: r = r - bias]
+    A["Complex Input: z = r * e^iθ"] --> B["Subtract Bias: r = r - bias"]
     B --> C{r > 0?}
-    C -->|No| D[Output: 0 + 0i]
-    C -->|Yes| E[Apply Elastic Limit: r = tanh(r)]
-    E --> F[Restore Original Phase: θ]
-    F --> G[Silk Output: r * e^iθ]
+    C -->|No| D["Output: 0 + 0i"]
+    C -->|Yes| E["Apply Elastic Limit: r = tanh(r)"]
+    E --> F["Restore Original Phase: θ"]
+    F --> G["Silk Output: r * e^iθ"]
 ```
 
 Given $z \in \mathbb{C}$ and a bias $b \in \mathbb{R}^+$:
@@ -80,11 +80,11 @@ Signals do not flow through flat layers; they expand outward from the core to th
 
 ```mermaid
 graph TD
-    A[Shell s: Z_s] --> B[Forget Gate: F = sigmoid|W_f * Z_s|]
-    B --> C[Gating: Z_gated = F .* Z_s]
-    C --> D[BLAS Transform: Y = cgemv W_s * Z_gated + B]
-    D --> E[Silk Activation]
-    E --> F[Shell s+1: Z_s+1]
+    A["Shell s: Z_s"] --> B["Forget Gate: F = sigmoid|W_f * Z_s|"]
+    B --> C["Gating: Z_gated = F .* Z_s"]
+    C --> D["BLAS Transform: Y = cgemv W_s * Z_gated + B"]
+    D --> E["Silk Activation"]
+    E --> F["Shell s+1: Z_s+1"]
 ```
 
 * **The Math of Expansion:** The node count for shell $s$ explodes exponentially: $N(s) = \lceil 2 \cdot e^{0.3 \cdot (s - 1)} \rceil$. *(Shell 1 = 2 nodes, Shell 16 = 181 nodes).*
@@ -241,26 +241,42 @@ Despite having no backpropagation through the projection weights and strictly ut
 ### 1. XOR Dataset (Non-linear baseline)
 **Final Accuracy: 100%**
 RadNet effortlessly maps the classic non-linear XOR problem, reaching 100% accuracy within a few epochs.
+<details>
+<summary>View Terminal Output</summary>
+
 ![XOR Terminal Output 1](TImage/XOR1.png)
 ![XOR Terminal Output 2](TImage/XOR2.png)
+</details>
 
 ### 2. Iris Dataset (Multi-class)
 **Final Accuracy: 100%**
 Proving multi-class continuous feature learning, the projection layer folds the 4 flower features into the 2-node shell, and successfully classifies the 3 distinct Iris species.
+<details>
+<summary>View Terminal Output</summary>
+
 ![Iris Terminal Output 1](TImage/Iris1.png)
 ![Iris Terminal Output 2](TImage/Iris2.png)
+</details>
 
 ### 3. Heart Disease Dataset (Clinical Data)
 **Final Accuracy: ~85%+ (Converged)**
 Proving convergence on noisy, real-world clinical data.
+<details>
+<summary>View Terminal Output</summary>
+
 ![Heart Terminal Output 1](TImage/Heart1.png)
 ![Heart Terminal Output 2](TImage/Heart2.png)
+</details>
 
 ### 4. Breast Cancer Dataset (High-Dimensional)
 **Final Accuracy: ~95%+ (Converged)**
 Proving that the Universal Random Projection matrix can perfectly compress 30 distinct clinical features down to the 2-node entry shell without destructive information loss.
+<details>
+<summary>View Terminal Output</summary>
+
 ![Breast Cancer Terminal Output 1](TImage/BCancer1.png)
 ![Breast Cancer Terminal Output 2](TImage/BCancer2.png)
+</details>
 
 ### 5. MNIST (High-Dimensional Vision)
 **Final Accuracy: ~11% (In 1 Epoch)**
